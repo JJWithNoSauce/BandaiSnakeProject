@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://eftg82t6r7cq"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_dgfhh"]
+[ext_resource type="PackedScene" uid="uid://c2lw0a4dhnnig" path="res://scene/player.tscn" id="2_6nceo"]
+[ext_resource type="Script" path="res://scripts/manager/ladderManager.gd" id="2_dghg1"]
+
+[sub_resource type="Curve2D" id="Curve2D_0jt7g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 117, 579, 0, 0, 0, 0, 993, 564, 0, 0, 0, 0, 977, 173, 0, 0, 0, 0, 730, 182, 0, 0, 0, 0, 772, 447, 0, 0, 0, 0, 345, 483, 0, 0, 0, 0, 138, 208, 0, 0, 0, 0, 137, 83, 0, 0, 0, 0, 540, 36)
+}
+point_count = 9
+
+[sub_resource type="TileSet" id="TileSet_uhmgl"]
+tile_size = Vector2i(50, 50)
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_dgfhh")
+playerScene = ExtResource("2_6nceo")
+
+[node name="pathLadder" type="Path2D" parent="."]
+curve = SubResource("Curve2D_0jt7g")
+script = ExtResource("2_dghg1")
+
+[node name="grid" type="TileMap" parent="pathLadder"]
+tile_set = SubResource("TileSet_uhmgl")
+format = 2
+
+[node name="pathStep" type="PathFollow2D" parent="pathLadder"]
+position = Vector2(117, 579)
+rotation = -0.0171216
+loop = false
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="roll" type="Button" parent="ui"]
+anchors_preset = -1
+anchor_left = 0.033
+anchor_top = 0.602
+anchor_right = 0.092
+anchor_bottom = 0.69
+offset_left = 11.984
+offset_top = 10.904
+offset_right = -18.984
+offset_bottom = -15.12
+text = "Roll"
+
+[node name="point" type="Label" parent="ui"]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.089
+anchor_bottom = 0.596
+offset_left = 45.0
+offset_top = 19.0
+offset_right = -17.528
+offset_bottom = -17.208
+text = "0
+"
+
+[node name="players" type="Node2D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="players"]
+_spawnable_scenes = PackedStringArray("res://scene/player.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="ui/roll" to="." method="_on_roll_pressed"]
