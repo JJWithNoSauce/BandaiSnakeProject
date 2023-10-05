@@ -18,3 +18,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameController="*res://scripts/network/gameController.gd"
+Lib="*res://scripts/lib.gd"

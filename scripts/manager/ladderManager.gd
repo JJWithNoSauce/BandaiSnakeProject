@@ -21,7 +21,6 @@ func _physics_process(delta):
 	genCell()
 	next += delta 
 
-
 func genCell():
 	if isgenCell : return
 	

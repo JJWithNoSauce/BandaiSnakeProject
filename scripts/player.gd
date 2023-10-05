@@ -5,13 +5,14 @@ var isWalk = false
 var stepWalk = 0
 var stepNow = 1
 var stepDir = 1
+var nextPos = Vector2(0,0)
 
 func init(pos,playerInfo,n,l,now):
 	name = str(n)
-	position = pos
-	info = playerInfo
+	nextPos = pos
 	ladder = l
 	stepNow = now
+	info = GameController.players[str(name).to_int()]
 	
 func _enter_tree():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
@@ -19,21 +20,31 @@ func _enter_tree():
 func _ready():
 	add_to_group("moving")
 	add_to_group("system")
+	
 	get_tree().call_group("system","on_getLadder",self)
+	info = GameController.players[str(name).to_int()]
+	nextPos = ladder.getPosFromStep(1)
+	position = nextPos
+	
+	$Polygon2D.color = Color(info["id"]/4.0,info["id"]/5.0,info["id"]/6.0)
 
 func _physics_process(delta):
-	if isSelf() :
-		if stepWalk : on_walkToStep(stepWalk,stepDir)
+	if not isSelf(): return
+
+	position = position.move_toward(nextPos,10)
 
 func on_walkToStep(s,dir):
 	stepWalk = s
 	stepDir = dir
 	stepNow += 1 * dir
 	stepWalk -= 1 
-	var nextPos = ladder.getPosFromStep(stepNow)
-	position = nextPos
-	if ladder.step != stepNow : return
-		
+	nextPos = ladder.getPosFromStep(stepNow)
+	
+	await Lib.wait(0.4)
+	if ladder.step != stepNow : 
+		if stepWalk : on_walkToStep(stepWalk,stepDir)
+		return
+	
 	if stepWalk > 0 : stepDir = -1
 	else : 
 		stepWalk = 0

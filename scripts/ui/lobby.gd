@@ -62,6 +62,7 @@ func player_loaded():
 		players_loaded += 1
 		if players_loaded == players.size():
 			GameController.setPlayers.rpc(players)
+			await get_tree().create_timer(0.2).timeout
 			load_game.rpc()
 			players_loaded = 0
 
@@ -99,7 +100,6 @@ func _on_server_disconnected():
 
 func _on_host_pressed():
 	create_game()
-
 
 func _on_join_pressed():
 	var ip = $ip.text
