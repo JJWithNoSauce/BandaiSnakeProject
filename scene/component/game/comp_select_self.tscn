@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv8hgmcpchcax"]
+
+[ext_resource type="Script" path="res://scripts/component/game/selectPlayerComp.gd" id="1_lxtsx"]
+
+[node name="CompSelectSelf" type="Node2D"]
+script = ExtResource("1_lxtsx")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-44.5156, -39.3125)
+scale = Vector2(0.421875, 0.421875)
+color = Color(0, 0.705882, 0.733333, 1)
+offset = Vector2(43.8, 33.37)
+polygon = PackedVector2Array(-56, -68, -46, -40, -77, -46, -74, -21, -46, -32, -51, -4, -30, -5, -40, -33, -14, -23, -13, -54, -40, -42, -29, -68)

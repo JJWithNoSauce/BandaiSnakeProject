@@ -1,5 +1,5 @@
 extends Node2D
-class_name ActionWalk
+class_name CompActionWalk
 
 @export var walkStep = 0
 @export var dir = 1

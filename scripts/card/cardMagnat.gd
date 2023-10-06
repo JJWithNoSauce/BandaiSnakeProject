@@ -1,7 +1,7 @@
 extends CardParent
 
 func _ready():
-	print("ssss")
+	pass
 
 func _process(delta):
 	pass

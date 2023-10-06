@@ -4,6 +4,7 @@ class_name Player
 var info
 var ladder:Ladder
 var isWalk = false
+var uid = 0
 var stepWalk = 0
 var stepNow = 1
 var stepDir = 1
@@ -17,6 +18,7 @@ func init(pos,playerInfo,n,l,now):
 	info = GameController.players[str(name).to_int()]
 
 func _enter_tree():
+	uid = str(name).to_int()
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
 func _ready():
@@ -28,6 +30,7 @@ func _ready():
 	nextPos = ladder.getPosFromStep(1)
 	position = nextPos
 	
+	GameController.playersStat.append(self)
 	$Polygon2D.color = Color(info["id"]/4.0,info["id"]/5.0,info["id"]/6.0)
 
 func _physics_process(delta):

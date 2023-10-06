@@ -1,5 +1,6 @@
 extends Node
 var players = {}
+var playersStat = []
 var point = 0
 var playerQueue = []
 var isTrun = false
