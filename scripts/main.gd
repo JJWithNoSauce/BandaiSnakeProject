@@ -1,6 +1,7 @@
 extends Node2D
 @export var playerScene:PackedScene
 var point = 0
+var reqPoint = 0
 
 func _ready():
 	add_to_group("system")
@@ -25,18 +26,20 @@ func spwanPlayer():
 	if Lib.isServer(): GameController.readyToStart()
 
 func _on_roll_pressed():
-	endTrun()
+	endTurn()
 
 func on_getLadder(p):
 	p.ladder = $pathLadder
 
-func endTrun():
-	GameController.server_roll.rpc()
+func endTurn():
+	GameController.server_roll.rpc(reqPoint)
 	await get_tree().create_timer(0.2).timeout
 	point = GameController.point
 	
 	GameController.server_getEndTurn.rpc()
 	get_tree().call_group("moving","on_walkToStep",point,1)
+	
+	reqPoint = 0
 	$ui/point.text = str(point)
 	$ui/roll.disabled = true
 	$trunTimeout.stop()
@@ -46,4 +49,4 @@ func on_isTrun():
 	$ui/roll.disabled = false
 
 func _on_trun_timeout_timeout():
-	endTrun()
+	endTurn()

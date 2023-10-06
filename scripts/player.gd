@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Player
+
 var info
 var ladder:Ladder
 var isWalk = false
@@ -13,7 +15,7 @@ func init(pos,playerInfo,n,l,now):
 	ladder = l
 	stepNow = now
 	info = GameController.players[str(name).to_int()]
-	
+
 func _enter_tree():
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
 
@@ -30,8 +32,7 @@ func _ready():
 
 func _physics_process(delta):
 	if not isSelf(): return
-
-	position = position.move_toward(nextPos,10)
+	if stepWalk : position = position.move_toward(nextPos,10)
 
 func on_walkToStep(s,dir):
 	stepWalk = s
@@ -50,5 +51,18 @@ func on_walkToStep(s,dir):
 		stepWalk = 0
 		get_tree().call_group("system","on_winned")
 
+func setStep(s):
+	var pos = ladder.getPosFromStep(s)
+	position = pos
+
+func reqPoint(p):
+	get_parent().reqPoint = p
+
+func swapPos(p:Player):
+	var pos = p.position
+	p.position = position
+	position = pos
+
 func isSelf():
 	return $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id()
+

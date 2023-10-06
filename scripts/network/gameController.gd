@@ -18,10 +18,13 @@ func setPlayers(p):
 		playerQueue.append(i)
 
 @rpc("any_peer","call_local", "reliable",2)
-func server_roll():
+func server_roll(reqP):
 	if not Lib.isServer(): return
+	
 	var sender = multiplayer.get_remote_sender_id()
 	var p = randi_range(1,10)
+	if reqP : p = reqP
+	
 	getRoll.rpc_id(sender,p)
 
 @rpc("authority","call_local", "reliable",2)
@@ -38,7 +41,6 @@ func server_getEndTurn():
 	if not Lib.isServer() :return
 	playerQueue.push_back(multiplayer.get_remote_sender_id())
 	var send = playerQueue.pop_front()
-	print(send)
 	nextTurn.rpc_id(send)
 	
 @rpc("authority","call_local","reliable",2)
