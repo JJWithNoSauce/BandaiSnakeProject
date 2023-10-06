@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://tc38h7aqwbdu"]
+
+[ext_resource type="Script" path="res://scripts/ui/cardContainer.gd" id="1_6j2kj"]
+
+[node name="cardContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6j2kj")
+
+[node name="cardPos" type="Node2D" parent="."]
+
+[node name="1" type="Marker2D" parent="cardPos"]
+position = Vector2(350, 600)
+
+[node name="2" type="Marker2D" parent="cardPos"]
+position = Vector2(500, 600)
+
+[node name="3" type="Marker2D" parent="cardPos"]
+position = Vector2(650, 600)
+
+[node name="4" type="Marker2D" parent="cardPos"]
+position = Vector2(800, 600)
+
+[connection signal="child_entered_tree" from="cardPos" to="." method="_on_card_pos_child_entered_tree"]

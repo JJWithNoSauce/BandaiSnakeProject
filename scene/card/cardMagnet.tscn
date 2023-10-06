@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cghgbi7wc6ltj"]
+
+[ext_resource type="Script" path="res://scripts/card/cardMagnat.gd" id="1_q0k73"]
+
+[node name="cardMagnet" type="Node2D"]
+scale = Vector2(-1.04945, 5.16314)
+script = ExtResource("1_q0k73")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-0.952881, 0)
+scale = Vector2(1.43811, 0.261674)
+color = Color(0.807843, 0.431373, 0.556863, 1)
+polygon = PackedVector2Array(-43.0686, 90.2995, 49, 90, 50.3572, -72.5356, -42.406, -69.575)

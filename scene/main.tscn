@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://eftg82t6r7cq"]
+[gd_scene load_steps=7 format=3 uid="uid://eftg82t6r7cq"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_dgfhh"]
 [ext_resource type="PackedScene" uid="uid://c2lw0a4dhnnig" path="res://scene/player.tscn" id="2_6nceo"]
 [ext_resource type="Script" path="res://scripts/manager/ladderManager.gd" id="2_dghg1"]
+[ext_resource type="PackedScene" uid="uid://tc38h7aqwbdu" path="res://scene/ui/cardContainer.tscn" id="3_gs4t1"]
 
 [sub_resource type="Curve2D" id="Curve2D_0jt7g"]
 _data = {
@@ -16,6 +17,8 @@ tile_size = Vector2i(50, 50)
 [node name="main" type="Node2D"]
 script = ExtResource("1_dgfhh")
 playerScene = ExtResource("2_6nceo")
+
+[node name="cardContainer" parent="." instance=ExtResource("3_gs4t1")]
 
 [node name="pathLadder" type="Path2D" parent="."]
 curve = SubResource("Curve2D_0jt7g")
