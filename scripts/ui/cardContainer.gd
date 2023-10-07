@@ -1,8 +1,10 @@
-extends Control
+extends CanvasLayer
 var cardsPos = {}
 var card:PackedScene = load("res://scene/card/cardMagnet.tscn")
 
 func _ready():
+	add_to_group("card")
+	draw()
 	draw()
 
 
@@ -18,7 +20,10 @@ func draw():
 	
 	for i in cardsPos:
 		if cardsPos[i] : continue
+		cardsPos[i] = true
 		ins.init(i)
 		add_child(ins)
 		return
-		
+
+func _on_use_card_pressed():
+	get_tree().call_group("card","on_useCard")

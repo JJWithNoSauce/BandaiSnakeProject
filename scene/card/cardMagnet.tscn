@@ -1,13 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cghgbi7wc6ltj"]
+[gd_scene load_steps=5 format=3 uid="uid://cghgbi7wc6ltj"]
 
 [ext_resource type="Script" path="res://scripts/card/cardMagnat.gd" id="1_q0k73"]
+[ext_resource type="PackedScene" uid="uid://bna34vu8s5tj7" path="res://scene/component/game/comp_card_select.tscn" id="2_ty2o1"]
+[ext_resource type="PackedScene" uid="uid://bv6cgigw0e80b" path="res://scene/component/game/comp_select_allInRange.tscn" id="3_ik82p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_heg6y"]
+size = Vector2(492.611, 150)
 
 [node name="cardMagnet" type="Node2D"]
-scale = Vector2(-1.04945, 5.16314)
+scale = Vector2(-0.203, 1)
 script = ExtResource("1_q0k73")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(-0.952881, 0)
+z_index = 1
+position = Vector2(-0.952883, -2.51785)
 scale = Vector2(1.43811, 0.261674)
 color = Color(0.807843, 0.431373, 0.556863, 1)
-polygon = PackedVector2Array(-43.0686, 90.2995, 49, 90, 50.3572, -72.5356, -42.406, -69.575)
+polygon = PackedVector2Array(-170.608, 200.7, 171.933, 200.7, 171.933, -372.533, -170.608, -372.533)
+
+[node name="comp_card_select" parent="." instance=ExtResource("2_ty2o1")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="comp_card_select"]
+position = Vector2(-1.87916e-05, -25)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_heg6y")
+
+[node name="comp_select_allInRange" parent="." instance=ExtResource("3_ik82p")]

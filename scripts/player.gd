@@ -30,7 +30,8 @@ func _ready():
 	nextPos = ladder.getPosFromStep(1)
 	position = nextPos
 	
-	GameController.playersStat.append(self)
+	ActionControl.playersStat[str(name).to_int()] = self
+	print(ActionControl.playersStat)
 	$Polygon2D.color = Color(info["id"]/4.0,info["id"]/5.0,info["id"]/6.0)
 
 func _physics_process(delta):

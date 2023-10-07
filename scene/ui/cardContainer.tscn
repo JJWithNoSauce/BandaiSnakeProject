@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/cardContainer.gd" id="1_6j2kj"]
 
-[node name="cardContainer" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="cardContainer" type="CanvasLayer"]
 script = ExtResource("1_6j2kj")
 
 [node name="cardPos" type="Node2D" parent="."]
@@ -21,4 +19,12 @@ position = Vector2(650, 600)
 [node name="4" type="Marker2D" parent="cardPos"]
 position = Vector2(800, 600)
 
+[node name="useCard" type="Button" parent="."]
+offset_left = 544.0
+offset_top = 444.0
+offset_right = 618.0
+offset_bottom = 475.0
+text = "use card"
+
 [connection signal="child_entered_tree" from="cardPos" to="." method="_on_card_pos_child_entered_tree"]
+[connection signal="pressed" from="useCard" to="." method="_on_use_card_pressed"]

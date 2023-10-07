@@ -24,6 +24,7 @@ func spwanPlayer():
 		$players.add_child(ins,true)
 	
 	if Lib.isServer(): GameController.readyToStart()
+	ActionControl.setNowPlayer(Lib.getUID())
 
 func _on_roll_pressed():
 	endTurn()

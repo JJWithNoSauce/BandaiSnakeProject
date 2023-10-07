@@ -1,9 +1,23 @@
 [gd_scene load_steps=2 format=3 uid="uid://dv8hgmcpchcax"]
 
-[ext_resource type="Script" path="res://scripts/component/game/selectPlayerComp.gd" id="1_lxtsx"]
+[sub_resource type="GDScript" id="GDScript_xmj4r"]
+script/source = "extends Node2D
+class_name CompSelectSelf
+
+func _ready():
+	pass 
+
+func _process(delta):
+	pass
+
+func selectPlayer():
+	for i in GameController.playersStat :
+		pass
+
+"
 
 [node name="CompSelectSelf" type="Node2D"]
-script = ExtResource("1_lxtsx")
+script = SubResource("GDScript_xmj4r")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(-44.5156, -39.3125)

@@ -67,7 +67,7 @@ _spawnable_scenes = PackedStringArray("res://scene/player.tscn")
 spawn_path = NodePath("..")
 
 [node name="trunTimeout" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 70.0
 one_shot = true
 
 [connection signal="pressed" from="ui/roll" to="." method="_on_roll_pressed"]

@@ -1,8 +1,8 @@
 extends Node
 var players = {}
-var playersStat = []
 var point = 0
 var playerQueue = []
+var nowPlayer
 var isTrun = false
 
 func _ready():
@@ -40,6 +40,7 @@ func readyToStart():
 @rpc("any_peer","call_local","reliable",2)
 func server_getEndTurn():
 	if not Lib.isServer() :return
+	
 	playerQueue.push_back(multiplayer.get_remote_sender_id())
 	var send = playerQueue.pop_front()
 	nextTurn.rpc_id(send)
