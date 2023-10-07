@@ -19,7 +19,7 @@ func genSelect():
 	for i in  allPlayer:
 		var player = allPlayer[i]
 		if player == nowPlayer: continue
-		print(player,"  ",nowPlayer)
+		print(nowPlayer)
 		var delStep = nowPlayer.stepNow - player.stepNow
 		if abs(delStep) <= 5 :
 			setTarget(player,false)

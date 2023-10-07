@@ -22,7 +22,6 @@ polygon = PackedVector2Array(-170.608, 200.7, 171.933, 200.7, 171.933, -372.533,
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_card_select"]
 position = Vector2(-1.87916e-05, -25)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_heg6y")
 
 [node name="comp_select_allInRange" parent="." instance=ExtResource("3_ik82p")]

@@ -13,6 +13,7 @@ func _process(delta):
 
 func on_genCelled():
 	spwanPlayer()
+	ActionControl.setNowPlayer(Lib.getUID())
 
 func spwanPlayer():
 	if not multiplayer.is_server() : return
@@ -24,7 +25,6 @@ func spwanPlayer():
 		$players.add_child(ins,true)
 	
 	if Lib.isServer(): GameController.readyToStart()
-	ActionControl.setNowPlayer(Lib.getUID())
 
 func _on_roll_pressed():
 	endTurn()
