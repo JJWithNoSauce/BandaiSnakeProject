@@ -48,4 +48,4 @@ func server_getEndTurn():
 @rpc("authority","call_local","reliable",2)
 func nextTurn():
 	isTrun = true
-	get_tree().call_group("network","on_isTrun")
+	get_tree().call_group("network","on_isTurn")

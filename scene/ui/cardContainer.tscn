@@ -20,10 +20,15 @@ position = Vector2(650, 600)
 position = Vector2(800, 600)
 
 [node name="useCard" type="Button" parent="."]
-offset_left = 544.0
-offset_top = 444.0
-offset_right = 618.0
-offset_bottom = 475.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 312.0
+offset_top = -37.0
+offset_right = 386.0
+offset_bottom = -6.0
+grow_vertical = 0
+pivot_offset = Vector2(37.165, 14.47)
 text = "use card"
 
 [connection signal="child_entered_tree" from="cardPos" to="." method="_on_card_pos_child_entered_tree"]

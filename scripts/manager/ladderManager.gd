@@ -19,7 +19,7 @@ func _ready():
 
 func _physics_process(delta):
 	genCell()
-	next += delta 
+	next += delta * 0.6
 
 func genCell():
 	if isgenCell : return

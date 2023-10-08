@@ -25,3 +25,4 @@ position = Vector2(-1.87916e-05, -25)
 shape = SubResource("RectangleShape2D_heg6y")
 
 [node name="comp_select_allInRange" parent="." instance=ExtResource("3_ik82p")]
+stepRange = 5

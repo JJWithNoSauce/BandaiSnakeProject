@@ -7,9 +7,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_0jt7g"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 117, 579, 0, 0, 0, 0, 993, 564, 0, 0, 0, 0, 977, 173, 0, 0, 0, 0, 730, 182, 0, 0, 0, 0, 772, 447, 0, 0, 0, 0, 345, 483, 0, 0, 0, 0, 138, 208, 0, 0, 0, 0, 137, 83, 0, 0, 0, 0, 540, 36)
+"points": PackedVector2Array(0, 0, 0, 0, 112, 367, 0, 0, 0, 0, 168, 438, 0, 0, 0, 0, 671, 439, 0, 0, 0, 0, 841, 395, 0, 0, 0, 0, 985, 405, 0, 0, 0, 0, 1114, 341, 0, 0, 0, 0, 1124, 114, 0, 0, 0, 0, 971, 119, 0, 0, 0, 0, 832, 123, 0, 0, 0, 0, 887, 257, 0, 0, 0, 0, 709, 330, 0, 0, 0, 0, 392, 321, 0, 0, 0, 0, 387, 213, 0, 0, 0, 0, 138, 208, 0, 0, 0, 0, 137, 83, 0, 0, 0, 0, 533, 86)
 }
-point_count = 9
+point_count = 16
 
 [sub_resource type="TileSet" id="TileSet_uhmgl"]
 tile_size = Vector2i(50, 50)
@@ -21,6 +21,7 @@ playerScene = ExtResource("2_6nceo")
 [node name="cardContainer" parent="." instance=ExtResource("3_gs4t1")]
 
 [node name="pathLadder" type="Path2D" parent="."]
+position = Vector2(-11, -20)
 curve = SubResource("Curve2D_0jt7g")
 script = ExtResource("2_dghg1")
 
@@ -29,8 +30,8 @@ tile_set = SubResource("TileSet_uhmgl")
 format = 2
 
 [node name="pathStep" type="PathFollow2D" parent="pathLadder"]
-position = Vector2(117, 579)
-rotation = -0.0171216
+position = Vector2(112, 367)
+rotation = 0.902964
 loop = false
 
 [node name="ui" type="CanvasLayer" parent="."]

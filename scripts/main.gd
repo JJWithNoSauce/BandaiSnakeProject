@@ -13,6 +13,7 @@ func _process(delta):
 
 func on_genCelled():
 	spwanPlayer()
+	await  Lib.wait(0.5)
 	ActionControl.setNowPlayer(Lib.getUID())
 
 func spwanPlayer():
@@ -34,7 +35,7 @@ func on_getLadder(p):
 
 func endTurn():
 	GameController.server_roll.rpc(reqPoint)
-	await get_tree().create_timer(0.2).timeout
+	await Lib.wait(0.2)
 	point = GameController.point
 	
 	GameController.server_getEndTurn.rpc()
@@ -44,8 +45,10 @@ func endTurn():
 	$ui/point.text = str(point)
 	$ui/roll.disabled = true
 	$trunTimeout.stop()
+	
+	get_tree().call_group("network","on_endTurn")
 
-func on_isTrun():
+func on_isTurn():
 	$trunTimeout.start()
 	$ui/roll.disabled = false
 

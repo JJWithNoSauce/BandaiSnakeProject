@@ -4,7 +4,6 @@ var isMouse = false
 var player:Player
 var isCanSelect = true
 var isSelect = false
-var isFirst = false
 
 signal selectPlayer(player)
 
@@ -22,9 +21,7 @@ func _ready():
 	
 
 func _process(delta):
-	if not isFirst :
-		isFirst = true
-		global_position = player.global_position
+	global_position = player.global_position
 
 func _on_hitbox_mouse_entered():
 	isMouse = true
@@ -34,10 +31,10 @@ func _on_hitbox_mouse_exited():
 
 func _input(event):
 	if event.is_action_pressed("click") and isMouse and isCanSelect:
-		get_tree().call_group("aimming","playerSelected")
 		$Polygon2D.visible = false
 		$Polygon2D2.visible = true
 		isSelect = true
+		get_tree().call_group("aimming","playerSelected")
 		
 func playerSelected():
 	if isSelect : return

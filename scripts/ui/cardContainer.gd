@@ -4,6 +4,7 @@ var card:PackedScene = load("res://scene/card/cardMagnet.tscn")
 
 func _ready():
 	add_to_group("card")
+	add_to_group("network")
 	draw()
 	draw()
 
@@ -27,3 +28,9 @@ func draw():
 
 func _on_use_card_pressed():
 	get_tree().call_group("card","on_useCard")
+
+func on_isTurn():
+	$useCard.disabled = false
+
+func on_endTurn():
+	$useCard.disabled = true
