@@ -1,42 +1,235 @@
-[gd_scene load_steps=2 format=3 uid="uid://istt3iqax6yv"]
+[gd_scene load_steps=11 format=3 uid="uid://istt3iqax6yv"]
 
 [ext_resource type="Script" path="res://scripts/ui/winning.gd" id="1_w1kj0"]
+[ext_resource type="Texture2D" uid="uid://mqydah0lp704" path="res://asset/confettit.png" id="2_nl8hy"]
+[ext_resource type="Texture2D" uid="uid://dvh2auq0p5ytm" path="res://asset/cup idk.png" id="3_vl0pd"]
+[ext_resource type="AudioStream" uid="uid://cjdi0d0bb7qg1" path="res://sound/confetti.mp3" id="4_41ok3"]
+[ext_resource type="AudioStream" uid="uid://bn8wg07rnm6et" path="res://sound/won.mp3" id="4_pwqvt"]
+
+[sub_resource type="Animation" id="Animation_lfofy"]
+resource_name = "start"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cup:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cup:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../tantrum:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../confet:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_dax3q"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cup:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cup:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../tantrum:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../confet:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_qkx7x"]
+resource_name = "hover"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Cup:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Cup:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihkv5"]
+_data = {
+"RESET": SubResource("Animation_dax3q"),
+"hover": SubResource("Animation_qkx7x"),
+"start": SubResource("Animation_lfofy")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xo8pu"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 98, 0)
+initial_velocity_max = 408.45
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+radial_accel_max = 21.05
+tangential_accel_max = 21.05
+angle_max = 257.7
+scale_min = 0.1
+scale_max = 0.2
 
 [node name="winning" type="CanvasLayer"]
 script = ExtResource("1_w1kj0")
+
+[node name="AniPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../par")
+libraries = {
+"": SubResource("AnimationLibrary_ihkv5")
+}
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0, 0, 0, 0.207843)
 polygon = PackedVector2Array(-20, -20, -17, 672, 1205, 668, 1186, -35)
 
-[node name="win" type="Panel" parent="."]
-anchors_preset = -1
-anchor_right = 0.186
-anchor_bottom = 0.249
-offset_left = 413.0
-offset_top = 246.0
-offset_right = 543.728
-offset_bottom = 232.648
-
-[node name="playerWin" type="Label" parent="."]
-offset_left = 566.0
-offset_top = 302.0
-offset_right = 624.0
-offset_bottom = 328.0
-text = "player1"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 578.0
-offset_top = 255.0
-offset_right = 619.0
-offset_bottom = 283.0
-text = "WIN"
-
 [node name="toLobby" type="Button" parent="."]
 offset_left = 558.0
-offset_top = 346.0
+offset_top = 446.0
 offset_right = 636.0
-offset_bottom = 377.0
+offset_bottom = 477.0
 text = "To Lobby"
+
+[node name="par" type="GPUParticles2D" parent="."]
+position = Vector2(591, 316)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_xo8pu")
+texture = ExtResource("2_nl8hy")
+lifetime = 7.06
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+
+[node name="Cup" type="Sprite2D" parent="."]
+position = Vector2(595, 287)
+texture = ExtResource("3_vl0pd")
+
+[node name="playerWin" type="Label" parent="Cup"]
+offset_left = -27.0
+offset_top = -52.0
+offset_right = 31.0
+offset_bottom = -26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 16
+text = "player1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="confet" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_41ok3")
+
+[node name="tantrum" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_pwqvt")
+attenuation = 1.03527
 
 [connection signal="pressed" from="toLobby" to="." method="_on_to_lobby_pressed"]

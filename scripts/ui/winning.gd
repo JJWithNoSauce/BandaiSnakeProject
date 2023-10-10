@@ -2,7 +2,10 @@ extends CanvasLayer
 var lobby:PackedScene = load("res://scene/ui/lobby.tscn")
 
 func _ready():
-	$playerWin.text = GameController.winPlayer
+	$Cup/playerWin.text = GameController.winPlayer
+	$AniPlayer.play("start")
+	await get_tree().create_timer(0.6).timeout
+	$AniPlayer.play("hover")
 
 func _process(delta):
 	pass
