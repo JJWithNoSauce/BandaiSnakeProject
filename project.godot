@@ -25,7 +25,6 @@ ActionControl="*res://scripts/network/actionControl.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://asset/arrow.png"
 
 [input]
 

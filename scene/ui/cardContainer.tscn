@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://tc38h7aqwbdu"]
+[gd_scene load_steps=3 format=3 uid="uid://tc38h7aqwbdu"]
 
 [ext_resource type="Script" path="res://scripts/ui/cardContainer.gd" id="1_6j2kj"]
+[ext_resource type="Texture2D" uid="uid://o8o8dmptpfak" path="res://asset/coolboard.png" id="2_tcksm"]
 
 [node name="cardContainer" type="CanvasLayer"]
 script = ExtResource("1_6j2kj")
@@ -28,6 +29,11 @@ offset_bottom = -6.0
 grow_vertical = 0
 pivot_offset = Vector2(37.165, 14.47)
 text = "use card"
+
+[node name="Coolboard" type="Sprite2D" parent="."]
+position = Vector2(597, 614)
+scale = Vector2(1, 0.82)
+texture = ExtResource("2_tcksm")
 
 [connection signal="child_entered_tree" from="cardPos" to="." method="_on_card_pos_child_entered_tree"]
 [connection signal="pressed" from="useCard" to="." method="_on_use_card_pressed"]
