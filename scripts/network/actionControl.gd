@@ -14,3 +14,12 @@ func server_on_setWalk(id,step,dir):
 @rpc("authority","call_local","reliable",3)
 func on_getWalk(step,dir):
 	nowPlayer.on_walkToStep(step,dir)
+
+@rpc("any_peer","call_local","reliable",3)
+func server_on_walkInRoll(id,mult):
+	if not Lib.isServer() : return
+	getWalkInRoll.rpc_id(id,mult)
+
+@rpc("authority","call_local","reliable",3)
+func getWalkInRoll(mult):
+	get_tree().call_group("card","on_setWalkInRoll",mult)

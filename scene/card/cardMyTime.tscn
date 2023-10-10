@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bke45wk4a2klh"]
+
+[ext_resource type="PackedScene" uid="uid://bna34vu8s5tj7" path="res://scene/component/game/comp_card_select.tscn" id="1_oxucl"]
+[ext_resource type="Script" path="res://scripts/card/cardMyTime.gd" id="1_pmud1"]
+[ext_resource type="PackedScene" uid="uid://dv8hgmcpchcax" path="res://scene/component/game/comp_select_self.tscn" id="1_rtydj"]
+[ext_resource type="PackedScene" uid="uid://ds4waxpukap80" path="res://scene/component/game/comp_action_walkInRoll.tscn" id="2_840p1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxfg4"]
+size = Vector2(139, 234)
+
+[node name="cardMyTime" type="Node2D"]
+script = ExtResource("1_pmud1")
+
+[node name="comp_action_walkInRoll" parent="." instance=ExtResource("2_840p1")]
+
+[node name="comp_card_select" parent="." instance=ExtResource("1_oxucl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="comp_card_select"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_oxfg4")
+
+[node name="CompSelectSelf" parent="." instance=ExtResource("1_rtydj")]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.0196078, 0.737255, 0.823529, 1)
+polygon = PackedVector2Array(-66, -113, -71, 113, 71, 117, 71, -118)
+
+[connection signal="selectPlayer" from="CompSelectSelf" to="." method="_on_comp_select_self_select_player"]

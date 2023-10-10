@@ -28,3 +28,4 @@ func activate():
 	
 	isUsing = !isUsing
 	isActivate.emit(isUsing)
+

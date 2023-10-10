@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds4waxpukap80"]
+
+[ext_resource type="Script" path="res://scripts/component/game/comp_action_walkInRoll.gd" id="1_gyg8f"]
+
+[node name="comp_action_walkInRoll" type="Node2D"]
+script = ExtResource("1_gyg8f")

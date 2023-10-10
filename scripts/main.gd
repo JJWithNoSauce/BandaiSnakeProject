@@ -3,6 +3,7 @@ extends Node2D
 var point = 0
 var reqPoint = 0
 var isWalkRoll = false
+var walkInRoll = 1
 
 func _ready():
 	$bgm.play()
@@ -66,3 +67,6 @@ func _on_trun_timeout_timeout():
 func on_winned():
 	var win = load("res://scene/ui/winning.tscn")
 	get_tree().change_scene_to_packed(win)
+
+func on_setWalkInRoll(mu):
+	walkInRoll = mu

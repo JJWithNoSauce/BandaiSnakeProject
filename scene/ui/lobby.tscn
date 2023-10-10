@@ -28,7 +28,7 @@ script = ExtResource("1_v1qqy")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.713726, 0.713726, 0.713726, 1)
-polygon = PackedVector2Array(-32, -34, 1219, -40, 1196, 666, -26, 665)
+polygon = PackedVector2Array(-28, -28, 1174, -34, 1172, 669, -26, 665)
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(576, 146)
@@ -44,12 +44,14 @@ offset_right = 593.0
 offset_bottom = 447.0
 
 [node name="name" type="TextEdit" parent="joinUI"]
+layout_mode = 0
 offset_left = -227.0
 offset_top = -63.0
 offset_right = -98.0
 offset_bottom = -27.0
 
 [node name="playerName" type="Label" parent="joinUI"]
+layout_mode = 0
 offset_left = -281.0
 offset_top = -62.0
 offset_right = -230.0
@@ -57,6 +59,7 @@ offset_bottom = -36.0
 text = "Name"
 
 [node name="or" type="Label" parent="joinUI"]
+layout_mode = 0
 offset_left = -17.0
 offset_top = -58.0
 offset_right = 12.0
@@ -149,6 +152,7 @@ offset_bottom = 105.0
 text = "Log: "
 
 [node name="Log" type="RichTextLabel" parent="pStat/pLog"]
+layout_mode = 0
 offset_top = 26.0
 offset_right = 280.0
 offset_bottom = 57.0
