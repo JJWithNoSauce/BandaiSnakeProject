@@ -62,7 +62,7 @@ func on_walkToStep(s,dir):
 			isWalk = false
 		return
 	
-	if s > 0 : on_walkToStep(s-1,-dir)
+	if s > 3 : on_walkToStep(s-1,-dir)
 	else : 
 		GameController.server_win.rpc(info["name"])
 
