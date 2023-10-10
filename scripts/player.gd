@@ -14,9 +14,6 @@ func init(pos,playerInfo,n,l,now):
 	ladder = l
 	stepNow = now
 	info = GameController.players[str(name).to_int()]
-	
-	
-	
 
 func _enter_tree():
 	uid = str(name).to_int()
@@ -34,20 +31,10 @@ func _ready():
 	addName()
 	ActionControl.playersStat[str(name).to_int()] = self
 	$Polygon2D.color = Color(info["id"]/4.0,info["id"]/5.0,info["id"]/6.0)
-	
-	if info["id"] == 1:
-		$pSprite.frame = 0
-	elif info["id"] == 2:
-		$pSprite.frame = 1
-	elif info["id"] == 3:
-		$pSprite.frame = 2
-	elif info["id"] == 4:
-		$pSprite.frame = 3
 
 func addName():
 	$name.text = info["name"]
 	var pos = Vector2(0,0).from_angle((info["id"]-1)*45) * 15
-	print(pos)
 	$name.position = pos
 
 func _physics_process(delta):
@@ -59,13 +46,16 @@ func on_walkToStep(s,dir):
 	stepNow += 1 * dir
 	nextPos = ladder.getPosFromStep(stepNow)
 	await Lib.wait(0.2)
-	if ladder.step != stepNow : 
+	if stepNow < 20: 
 		if s > 1 : 
 			on_walkToStep(s-1,dir)
 		else : 
 			get_tree().call_group("system","on_walked")
 			isWalk = false
 		return
+	#debug
+	get_tree().call_group("system","on_winned")
+	return
 	
 	if s > 0 : on_walkToStep(s-1,-dir)
 	else : 

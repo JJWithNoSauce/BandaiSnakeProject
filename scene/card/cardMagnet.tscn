@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cghgbi7wc6ltj"]
+[gd_scene load_steps=6 format=3 uid="uid://cghgbi7wc6ltj"]
 
 [ext_resource type="Script" path="res://scripts/card/cardMagnat.gd" id="1_q0k73"]
 [ext_resource type="PackedScene" uid="uid://bna34vu8s5tj7" path="res://scene/component/game/comp_card_select.tscn" id="2_ty2o1"]
 [ext_resource type="PackedScene" uid="uid://bv6cgigw0e80b" path="res://scene/component/game/comp_select_allInRange.tscn" id="3_ik82p"]
 [ext_resource type="PackedScene" uid="uid://btmld4yfktbs4" path="res://scene/component/game/comp_action_walk.tscn" id="4_f36fn"]
-[ext_resource type="Texture2D" uid="uid://bbafy8hpmvl4r" path="res://asset/card4.png" id="5_58s4n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_heg6y"]
 size = Vector2(492.611, 150)
@@ -14,7 +13,6 @@ scale = Vector2(-0.203, 1)
 script = ExtResource("1_q0k73")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(-0.952883, -2.51785)
 scale = Vector2(1.43811, 0.261674)
@@ -31,11 +29,5 @@ shape = SubResource("RectangleShape2D_heg6y")
 stepRange = 10
 
 [node name="CompActionWalk" parent="." instance=ExtResource("4_f36fn")]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-5.73975, -24.0034)
-scale = Vector2(1.65812, 0.304222)
-texture = ExtResource("5_58s4n")
-flip_h = true
 
 [connection signal="selectPlayer" from="comp_select_allInRange" to="." method="_on_comp_select_all_in_range_select_player"]

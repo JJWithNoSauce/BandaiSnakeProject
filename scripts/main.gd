@@ -59,3 +59,9 @@ func on_isTurn():
 
 func _on_trun_timeout_timeout():
 	endTurn()
+
+func on_winned():
+	var win = load("res://scene/ui/winning.tscn")
+	add_child(win)
+	$trunTimeout.stop()
+	$cardContainer.visible = false
