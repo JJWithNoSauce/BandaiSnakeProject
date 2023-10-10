@@ -10,4 +10,8 @@ func _ready():
 func _process(delta):
 	pass
 
-#func waklking()
+func walkingStep(player,step,dir):
+	ActionControl.server_on_setWalk.rpc(player.uid,step,dir)
+	
+func walking(player):
+	ActionControl.server_on_setWalk.rpc(player.walkStep,dir)

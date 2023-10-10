@@ -2,6 +2,7 @@ extends Node2D
 @export var playerScene:PackedScene
 var point = 0
 var reqPoint = 0
+var isWalkRoll = false
 
 func _ready():
 	add_to_group("system")
@@ -38,14 +39,19 @@ func endTurn():
 	await Lib.wait(0.2)
 	point = GameController.point
 	
-	GameController.server_getEndTurn.rpc()
 	get_tree().call_group("moving","on_walkToStep",point,1)
 	
 	reqPoint = 0
 	$ui/point.text = str(point)
 	$ui/roll.disabled = true
 	$trunTimeout.stop()
+	isWalkRoll = true
 	
+
+func on_walked():
+	if not isWalkRoll : return
+	isWalkRoll = false
+	GameController.server_getEndTurn.rpc()
 	get_tree().call_group("network","on_endTurn")
 
 func on_isTurn():

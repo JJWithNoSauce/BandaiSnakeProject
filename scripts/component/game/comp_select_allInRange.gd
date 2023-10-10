@@ -12,4 +12,4 @@ func genSelect():
 		
 		var delStep = nowPlayer.stepNow - player.stepNow
 		if abs(delStep) <= stepRange:
-			setTarget(player,true)
+			setTarget(player,false)

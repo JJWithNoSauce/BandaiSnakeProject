@@ -15,10 +15,13 @@ func _ready():
 	add_to_group("card")
 	add_to_group("aimming")
 	global_scale = Vector2(1,1)
-	if not isCanSelect :
-		$Polygon2D.visible = false
-		$Polygon2D2.visible = true
+	if not isCanSelect : select(true)
+
 	
+func select(s):
+	$Polygon2D.visible = !s
+	$Polygon2D2.visible = s
+	isSelect = s
 
 func _process(delta):
 	global_position = player.global_position
@@ -31,9 +34,7 @@ func _on_hitbox_mouse_exited():
 
 func _input(event):
 	if event.is_action_pressed("click") and isMouse and isCanSelect:
-		$Polygon2D.visible = false
-		$Polygon2D2.visible = true
-		isSelect = true
+		select(true)
 		get_tree().call_group("aimming","playerSelected")
 		
 func playerSelected():
@@ -41,7 +42,7 @@ func playerSelected():
 	queue_free()
 		
 func on_useCard():
-	if isSelect or not isCanSelect:
+	if isSelect :
 		selectPlayer.emit(player)
 	queue_free()
 

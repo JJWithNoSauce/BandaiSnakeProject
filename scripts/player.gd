@@ -5,9 +5,7 @@ var info
 var ladder:Ladder
 var isWalk = false
 var uid = 0
-var stepWalk = 0
 var stepNow = 1
-var stepDir = 1
 var nextPos = Vector2(0,0)
 
 func init(pos,playerInfo,n,l,now):
@@ -35,27 +33,29 @@ func _ready():
 
 func _physics_process(delta):
 	if not isSelf(): return
-	if stepWalk : position = position.move_toward(nextPos,10)
+	if isWalk : position = position.move_toward(nextPos,10)
 
 func on_walkToStep(s,dir):
-	stepWalk = s
-	stepDir = dir
+	isWalk = true
 	stepNow += 1 * dir
-	stepWalk -= 1 
 	nextPos = ladder.getPosFromStep(stepNow)
-	
-	await Lib.wait(0.4)
+	await Lib.wait(0.2)
 	if ladder.step != stepNow : 
-		if stepWalk : on_walkToStep(stepWalk,stepDir)
+		if s > 1 : 
+			on_walkToStep(s-1,dir)
+		else : 
+			get_tree().call_group("system","on_walked")
+			isWalk = false
 		return
 	
-	if stepWalk > 0 : stepDir = -1
+	if s > 0 : on_walkToStep(s-1,-dir)
 	else : 
-		stepWalk = 0
 		get_tree().call_group("system","on_winned")
 
 func setStep(s):
 	var pos = ladder.getPosFromStep(s)
+	nextPos = pos
+	stepNow = s
 	position = pos
 
 func reqPoint(p):

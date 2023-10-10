@@ -4,15 +4,18 @@ class_name SelectParent
 var aim:PackedScene = load("res://scene/component/ui/aim.tscn")
 signal selectPlayer(players)
 var players = []
+var act = false
 
 func _ready():
 	get_parent().connect("isActivate",activate)
+	add_to_group("card")
 
 func _process(delta):
 	pass
 
 func activate(p):
-	if p : genSelect()
+	act = p
+	if act : genSelect()
 	
 func genSelect(): pass
 
@@ -24,3 +27,8 @@ func setTarget(player,canSelect):
 
 func getSelectPlayer(player):
 	players.append(player)
+
+func on_useCard():
+	if not act : return
+	await Lib.wait(0.1)
+	selectPlayer.emit(players)

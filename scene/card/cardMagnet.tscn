@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cghgbi7wc6ltj"]
+[gd_scene load_steps=6 format=3 uid="uid://cghgbi7wc6ltj"]
 
 [ext_resource type="Script" path="res://scripts/card/cardMagnat.gd" id="1_q0k73"]
 [ext_resource type="PackedScene" uid="uid://bna34vu8s5tj7" path="res://scene/component/game/comp_card_select.tscn" id="2_ty2o1"]
 [ext_resource type="PackedScene" uid="uid://bv6cgigw0e80b" path="res://scene/component/game/comp_select_allInRange.tscn" id="3_ik82p"]
+[ext_resource type="PackedScene" uid="uid://btmld4yfktbs4" path="res://scene/component/game/comp_action_walk.tscn" id="4_f36fn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_heg6y"]
 size = Vector2(492.611, 150)
@@ -25,4 +26,8 @@ position = Vector2(-1.87916e-05, -25)
 shape = SubResource("RectangleShape2D_heg6y")
 
 [node name="comp_select_allInRange" parent="." instance=ExtResource("3_ik82p")]
-stepRange = 5
+stepRange = 10
+
+[node name="CompActionWalk" parent="." instance=ExtResource("4_f36fn")]
+
+[connection signal="selectPlayer" from="comp_select_allInRange" to="." method="_on_comp_select_all_in_range_select_player"]
