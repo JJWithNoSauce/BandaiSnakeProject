@@ -59,14 +59,17 @@ func load_game():
 @rpc("any_peer", "call_local", "reliable")
 func player_loaded():
 	if multiplayer.is_server():
+		$pStat/pLog/Log.text = "A player is ready"
 		players_loaded += 1
 		if players_loaded == players.size():
+			$pStat/pLog/Log.text = "The game is starting"
 			GameController.setPlayers.rpc(players)
 			await get_tree().create_timer(0.2).timeout
 			load_game.rpc()
 			players_loaded = 0
 
 func _on_player_connected(id):
+	$pStat/pLog/Log.text = "A player is connected."
 	_register_player.rpc_id(id, player_info)
 
 
@@ -78,6 +81,7 @@ func _register_player(new_player_info):
 
 
 func _on_player_disconnected(id):
+	$pStat/pLog/Log.text = "A player is disconnected."
 	player_info.erase(id)
 	player_disconnected.emit(id)
 
@@ -98,22 +102,38 @@ func _on_server_disconnected():
 
 
 func _on_host_pressed():
-	var n = $name.text
-	if n == "" : n = "player " + str(players.size()+1)
+	var n = $joinUI/name.text
+	if n == null : n = "player " + str(players.size()+1)
 	player_info["name"] = n
 	create_game()
-	$hostG.visible = false
+	$joinUI.visible = false
+	$pStat.visible = true
+	$ready.visible = true
+	$pPosition.text = "You are the host!"
+	$pPosition.visible = true
+	pStatupdate(1)
 
 func _on_join_pressed():
-	var n = $name.text
+	var n = $joinUI/name.text
 	if n == "" : n = "player"
 	player_info["name"] = n
-	var ip = $joinG/ip.text
+	var ip = $joinUI/joinG/ip.text
 	join_game(ip)
+	
+	$joinUI.visible = false
+	$pStat.visible = true
+	$ready.visible = true
+	$pPosition.text = "You are the player"
+	$pPosition.visible = true
+	pStatupdate(1)
 
 func on_playerConect(id,info):
 	players[id]["id"] = players.size()
 
-
 func _on_ready_pressed():
+	pStatupdate(2)
 	player_loaded.rpc()
+	
+func pStatupdate(method):
+	#for method 0 = null , 1 = not ready , 2 = not ready
+		$pStat/P1.frame = method

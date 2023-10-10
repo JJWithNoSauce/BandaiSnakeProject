@@ -26,40 +26,52 @@ animations = [{
 [node name="lobby" type="Node2D"]
 script = ExtResource("1_v1qqy")
 
-[node name="ready" type="Button" parent="."]
-offset_left = 553.0
-offset_top = 407.0
-offset_right = 609.0
-offset_bottom = 438.0
-text = "Ready"
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.713726, 0.713726, 0.713726, 1)
+polygon = PackedVector2Array(-32, -34, 1219, -40, 1196, 666, -26, 665)
 
-[node name="name" type="TextEdit" parent="."]
-offset_left = 326.0
-offset_top = 344.0
-offset_right = 455.0
-offset_bottom = 380.0
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(576, 146)
+scale = Vector2(0.267, 0.267)
+texture = ExtResource("2_uiivm")
 
-[node name="playerName" type="Label" parent="."]
-offset_left = 272.0
-offset_top = 345.0
-offset_right = 323.0
-offset_bottom = 371.0
-text = "Name"
-
-[node name="or" type="Label" parent="."]
-offset_left = 536.0
-offset_top = 349.0
-offset_right = 565.0
-offset_bottom = 375.0
-text = "or"
-
-[node name="joinG" type="Control" parent="."]
+[node name="joinUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 553.0
+offset_top = 407.0
+offset_right = 593.0
+offset_bottom = 447.0
 
-[node name="laIP" type="Label" parent="joinG"]
+[node name="name" type="TextEdit" parent="joinUI"]
+offset_left = -227.0
+offset_top = -63.0
+offset_right = -98.0
+offset_bottom = -27.0
+
+[node name="playerName" type="Label" parent="joinUI"]
+offset_left = -281.0
+offset_top = -62.0
+offset_right = -230.0
+offset_bottom = -36.0
+text = "Name"
+
+[node name="or" type="Label" parent="joinUI"]
+offset_left = -17.0
+offset_top = -58.0
+offset_right = 12.0
+offset_bottom = -32.0
+text = "or"
+
+[node name="joinG" type="Control" parent="joinUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -553.0
+offset_top = -407.0
+offset_right = -513.0
+offset_bottom = -367.0
+
+[node name="laIP" type="Label" parent="joinUI/joinG"]
 layout_mode = 0
 offset_left = 940.0
 offset_top = 347.0
@@ -67,14 +79,14 @@ offset_right = 993.0
 offset_bottom = 373.0
 text = "ip host"
 
-[node name="ip" type="TextEdit" parent="joinG"]
+[node name="ip" type="TextEdit" parent="joinUI/joinG"]
 layout_mode = 0
 offset_left = 630.0
 offset_top = 344.0
 offset_right = 927.0
 offset_bottom = 381.0
 
-[node name="join" type="Button" parent="joinG"]
+[node name="join" type="Button" parent="joinUI/joinG"]
 layout_mode = 0
 offset_left = 567.0
 offset_top = 348.0
@@ -82,13 +94,15 @@ offset_right = 623.0
 offset_bottom = 379.0
 text = "Join ip"
 
-[node name="hostG" type="Control" parent="."]
+[node name="hostG" type="Control" parent="joinUI"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -553.0
+offset_top = -407.0
+offset_right = -513.0
+offset_bottom = -367.0
 
-[node name="host" type="Button" parent="hostG"]
+[node name="host" type="Button" parent="joinUI/hostG"]
 layout_mode = 0
 offset_left = 480.0
 offset_top = 346.0
@@ -96,38 +110,33 @@ offset_right = 524.0
 offset_bottom = 377.0
 text = "Host"
 
-[node name="Logo" type="Sprite2D" parent="."]
-position = Vector2(576, 146)
-scale = Vector2(0.267, 0.267)
-texture = ExtResource("2_uiivm")
+[node name="ready" type="Button" parent="."]
+visible = false
+offset_left = 559.0
+offset_top = 455.0
+offset_right = 615.0
+offset_bottom = 486.0
+text = "Ready"
+
+[node name="pPosition" type="Label" parent="."]
+visible = false
+offset_left = 398.0
+offset_top = 303.0
+offset_right = 774.0
+offset_bottom = 329.0
+text = "You are the host"
 
 [node name="pStat" type="RichTextLabel" parent="."]
-offset_left = 15.0
-offset_top = 535.0
-offset_right = 261.0
-offset_bottom = 637.0
-text = "Player 1 :
-Player 2 :
-Player 3 :
-Player 4 :"
-
-[node name="P4" type="AnimatedSprite2D" parent="pStat"]
-position = Vector2(86, 82)
-scale = Vector2(0.419364, 0.414496)
-sprite_frames = SubResource("SpriteFrames_61vcg")
-
-[node name="P3" type="AnimatedSprite2D" parent="pStat"]
-position = Vector2(86, 59)
-scale = Vector2(0.390304, 0.370304)
-sprite_frames = SubResource("SpriteFrames_61vcg")
-
-[node name="P2" type="AnimatedSprite2D" parent="pStat"]
-position = Vector2(86, 36)
-scale = Vector2(0.4076, 0.387601)
-sprite_frames = SubResource("SpriteFrames_61vcg")
+visible = false
+offset_left = 402.0
+offset_top = 342.0
+offset_right = 975.0
+offset_bottom = 444.0
+text = "(You) :
+"
 
 [node name="P1" type="AnimatedSprite2D" parent="pStat"]
-position = Vector2(86, 14)
+position = Vector2(65, 13)
 scale = Vector2(0.4, 0.42)
 sprite_frames = SubResource("SpriteFrames_61vcg")
 
@@ -139,12 +148,12 @@ offset_right = 376.0
 offset_bottom = 105.0
 text = "Log: "
 
-[node name="pLog" type="RichTextLabel" parent="pStat/pLog"]
+[node name="Log" type="RichTextLabel" parent="pStat/pLog"]
 offset_top = 26.0
 offset_right = 280.0
 offset_bottom = 57.0
 text = "..."
 
+[connection signal="pressed" from="joinUI/joinG/join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="joinUI/hostG/host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="ready" to="." method="_on_ready_pressed"]
-[connection signal="pressed" from="joinG/join" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="hostG/host" to="." method="_on_host_pressed"]
