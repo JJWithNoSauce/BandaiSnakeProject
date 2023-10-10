@@ -3,6 +3,9 @@ extends Node
 var playersStat = {}
 var nowPlayer : Player
 
+func _ready():
+	add_to_group("card")
+
 func setNowPlayer(id):
 	nowPlayer = playersStat[id]
 

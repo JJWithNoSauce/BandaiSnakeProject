@@ -10,6 +10,7 @@ func _ready():
 	add_to_group("system")
 	add_to_group("moving")
 	add_to_group("network")
+	add_to_group("card")
 
 func _process(delta):
 	pass
@@ -42,14 +43,16 @@ func endTurn():
 	GameController.server_roll.rpc(reqPoint)
 	await Lib.wait(0.2)
 	point = GameController.point
-	
-	get_tree().call_group("moving","on_walkToStep",point,1)
-	
 	reqPoint = 0
-	$ui/point.text = str(point)
 	$ui/roll.disabled = true
 	$trunTimeout.stop()
+	$ui/point.text = str(point)
 	isWalkRoll = true
+	
+	if walkInRoll-1: $ui/point.text = str(point) + " * " + str(walkInRoll)
+	point = point * walkInRoll
+	get_tree().call_group("moving","on_walkToStep",point,1)
+	walkInRoll = 1
 
 func on_walked():
 	if not isWalkRoll : return
@@ -70,3 +73,4 @@ func on_winned():
 
 func on_setWalkInRoll(mu):
 	walkInRoll = mu
+	$ui/point.text = str(point) + " * " + str(walkInRoll)

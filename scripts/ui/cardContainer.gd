@@ -1,6 +1,7 @@
 extends CanvasLayer
 var cardsPos = {}
-var card:PackedScene = load("res://scene/card/cardMagnet.tscn")
+var card
+var cards = ["res://scene/card/cardMagnet.tscn","res://scene/card/cardMyTime.tscn"]
 
 func _ready():
 	add_to_group("card")
@@ -16,7 +17,8 @@ func _on_card_pos_child_entered_tree(node):
 	cardsPos[node.position] = null
 
 func draw():
-	var ins = card.instantiate()
+	card = cards.pick_random()
+	var ins = load(card).instantiate()
 	
 	for i in cardsPos:
 		if cardsPos[i] : continue
