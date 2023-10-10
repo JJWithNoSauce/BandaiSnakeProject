@@ -102,6 +102,7 @@ func _on_host_pressed():
 	if n == "" : n = "player " + str(players.size()+1)
 	player_info["name"] = n
 	create_game()
+	$hostG.visible = false
 
 func _on_join_pressed():
 	var n = $name.text
