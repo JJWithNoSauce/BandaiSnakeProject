@@ -5,6 +5,7 @@ var reqPoint = 0
 var isWalkRoll = false
 
 func _ready():
+	$bgm.play()
 	add_to_group("system")
 	add_to_group("moving")
 	add_to_group("network")
@@ -35,6 +36,8 @@ func on_getLadder(p):
 	p.ladder = $pathLadder
 
 func endTurn():
+	$dice.play()
+	await Lib.wait(1)
 	GameController.server_roll.rpc(reqPoint)
 	await Lib.wait(0.2)
 	point = GameController.point
