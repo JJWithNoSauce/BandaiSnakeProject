@@ -25,10 +25,11 @@ func draw():
 		return
 
 func _on_use_card_pressed():
-	get_tree().call_group("card","on_useCard")
 	$useCard.visible = false
+	get_tree().call_group("card","on_useCard")
 
 func on_isTurn():
+	await Lib.wait(0.1)
 	$useCard.disabled = false
 
 func on_endTurn():

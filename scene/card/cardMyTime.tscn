@@ -7,30 +7,31 @@
 [ext_resource type="Texture2D" uid="uid://clgvu2ket71uv" path="res://asset/card2.png" id="5_lvoro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxfg4"]
-size = Vector2(88, 158)
+size = Vector2(101, 169)
 
 [node name="cardMyTime" type="Node2D"]
 script = ExtResource("1_pmud1")
+
+[node name="Card2" type="Sprite2D" parent="."]
+position = Vector2(-0.999999, -34)
+scale = Vector2(0.34, 0.338)
+texture = ExtResource("5_lvoro")
 
 [node name="comp_action_walkInRoll" parent="." instance=ExtResource("2_840p1")]
 
 [node name="comp_card_select" parent="." instance=ExtResource("1_oxucl")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="comp_card_select"]
-position = Vector2(0, -4)
+position = Vector2(0.5, -35.5)
 shape = SubResource("RectangleShape2D_oxfg4")
 
 [node name="CompSelectSelf" parent="." instance=ExtResource("1_rtydj")]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(-1, -2)
 scale = Vector2(0.609155, 0.670937)
 color = Color(0.0196078, 0.737255, 0.823529, 1)
 polygon = PackedVector2Array(-66, -113, -71, 113, 69.0459, 114.358, 71, -118)
-
-[node name="Card2" type="Sprite2D" parent="."]
-position = Vector2(-3.99998, -5.49999)
-scale = Vector2(0.34, 0.338)
-texture = ExtResource("5_lvoro")
 
 [connection signal="selectPlayer" from="CompSelectSelf" to="." method="_on_comp_select_self_select_player"]
