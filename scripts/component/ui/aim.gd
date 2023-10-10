@@ -19,8 +19,7 @@ func _ready():
 
 	
 func select(s):
-	$Polygon2D.visible = !s
-	$Polygon2D2.visible = s
+	$Arrow/ArrAni.play("Arr")
 	isSelect = s
 
 func _process(delta):
