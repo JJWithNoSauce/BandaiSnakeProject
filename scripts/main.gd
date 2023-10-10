@@ -46,7 +46,6 @@ func endTurn():
 	$ui/roll.disabled = true
 	$trunTimeout.stop()
 	isWalkRoll = true
-	
 
 func on_walked():
 	if not isWalkRoll : return

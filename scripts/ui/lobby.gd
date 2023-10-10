@@ -66,7 +66,6 @@ func player_loaded():
 			load_game.rpc()
 			players_loaded = 0
 
-
 func _on_player_connected(id):
 	_register_player.rpc_id(id, player_info)
 
@@ -99,10 +98,16 @@ func _on_server_disconnected():
 
 
 func _on_host_pressed():
+	var n = $name.text
+	if n == "" : n = "player " + str(players.size()+1)
+	player_info["name"] = n
 	create_game()
 
 func _on_join_pressed():
-	var ip = $ip.text
+	var n = $name.text
+	if n == "" : n = "player"
+	player_info["name"] = n
+	var ip = $joinG/ip.text
 	join_game(ip)
 
 func on_playerConect(id,info):

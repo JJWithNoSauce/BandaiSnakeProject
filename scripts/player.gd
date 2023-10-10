@@ -28,8 +28,15 @@ func _ready():
 	nextPos = ladder.getPosFromStep(1)
 	position = nextPos
 	
+	addName()
 	ActionControl.playersStat[str(name).to_int()] = self
 	$Polygon2D.color = Color(info["id"]/4.0,info["id"]/5.0,info["id"]/6.0)
+
+func addName():
+	$name.text = info["name"]
+	var pos = Vector2(0,0).from_angle((info["id"]-1)*45) * 15
+	print(pos)
+	$name.position = pos
 
 func _physics_process(delta):
 	if not isSelf(): return
