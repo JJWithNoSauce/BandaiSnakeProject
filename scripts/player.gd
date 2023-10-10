@@ -31,6 +31,14 @@ func _ready():
 	addName()
 	ActionControl.playersStat[str(name).to_int()] = self
 	$Polygon2D.color = Color(info["id"]/4.0,info["id"]/5.0,info["id"]/6.0)
+	if info["id"] == 1:
+		$pSprite.frame = 0
+	elif info["id"] == 2:
+		$pSprite.frame = 1
+	elif info["id"] == 3:
+		$pSprite.frame = 2
+	elif info["id"] == 4:
+		$pSprite.frame = 3
 
 func addName():
 	$name.text = info["name"]
