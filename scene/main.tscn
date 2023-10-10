@@ -66,6 +66,7 @@ offset_left = 45.0
 offset_top = 19.0
 offset_right = -17.528
 offset_bottom = -17.208
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "0
 "
 
