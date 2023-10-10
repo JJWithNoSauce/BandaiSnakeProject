@@ -6,9 +6,6 @@ var cards = ["res://scene/card/cardMagnet.tscn","res://scene/card/cardMyTime.tsc
 func _ready():
 	add_to_group("card")
 	add_to_group("network")
-	draw()
-	draw()
-
 
 func _process(delta):
 	pass

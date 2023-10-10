@@ -4,6 +4,7 @@ var point = 0
 var reqPoint = 0
 var isWalkRoll = false
 var walkInRoll = 1
+var turn = 0
 
 func _ready():
 	$bgm.play()
@@ -62,6 +63,8 @@ func on_walked():
 
 func on_isTurn():
 	$trunTimeout.start()
+	turn += 1
+	if turn%2 == 0: $cardContainer.draw()
 	$ui/roll.disabled = false
 
 func _on_trun_timeout_timeout():
