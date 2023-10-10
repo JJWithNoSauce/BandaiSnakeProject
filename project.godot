@@ -13,6 +13,7 @@ config_version=5
 config/name="BandaiSnakeProject"
 run/main_scene="res://scene/ui/lobby.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/image="res://asset/bg.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -20,6 +21,11 @@ config/icon="res://icon.svg"
 GameController="*res://scripts/network/gameController.gd"
 Lib="*res://scripts/lib.gd"
 ActionControl="*res://scripts/network/actionControl.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="res://asset/arrow.png"
 
 [input]
 
