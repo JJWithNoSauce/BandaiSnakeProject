@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://istt3iqax6yv"]
+
+[ext_resource type="Script" path="res://scripts/ui/winning.gd" id="1_w1kj0"]
+
+[node name="winning" type="CanvasLayer"]
+script = ExtResource("1_w1kj0")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.207843)
+polygon = PackedVector2Array(-20, -20, -17, 672, 1205, 668, 1186, -35)
+
+[node name="win" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.186
+anchor_bottom = 0.249
+offset_left = 380.0
+offset_top = 154.0
+offset_right = 510.728
+offset_bottom = 140.648
+
+[node name="playerWin" type="Label" parent="."]
+offset_left = 533.0
+offset_top = 210.0
+offset_right = 591.0
+offset_bottom = 236.0
+text = "player1"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 545.0
+offset_top = 163.0
+offset_right = 586.0
+offset_bottom = 191.0
+text = "WIN"
+
+[node name="toLobby" type="Button" parent="."]
+offset_left = 525.0
+offset_top = 254.0
+offset_right = 603.0
+offset_bottom = 285.0
+text = "To Lobby"
+
+[connection signal="pressed" from="toLobby" to="." method="_on_to_lobby_pressed"]

@@ -49,7 +49,6 @@ func endTurn():
 	$ui/roll.disabled = true
 	$trunTimeout.stop()
 	isWalkRoll = true
-	
 
 func on_walked():
 	if not isWalkRoll : return
@@ -63,3 +62,7 @@ func on_isTurn():
 
 func _on_trun_timeout_timeout():
 	endTurn()
+
+func on_winned():
+	var win = load("res://scene/ui/winning.tscn")
+	get_tree().change_scene_to_packed(win)
