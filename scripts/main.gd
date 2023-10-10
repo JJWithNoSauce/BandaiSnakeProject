@@ -62,6 +62,4 @@ func _on_trun_timeout_timeout():
 
 func on_winned():
 	var win = load("res://scene/ui/winning.tscn")
-	add_child(win)
-	$trunTimeout.stop()
-	$cardContainer.visible = false
+	get_tree().change_scene_to_packed(win)
