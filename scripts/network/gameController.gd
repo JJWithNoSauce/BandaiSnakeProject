@@ -3,6 +3,7 @@ var players = {}
 var point = 0
 var playerQueue = []
 var nowPlayer
+var winPlayer
 var isTrun = false
 
 func _ready():
@@ -49,3 +50,13 @@ func server_getEndTurn():
 func nextTurn():
 	isTrun = true
 	get_tree().call_group("network","on_isTurn")
+
+@rpc("any_peer","call_local","reliable",0)
+func server_win(n):
+	if not Lib.isServer() : return
+	getWin.rpc(n)
+	
+@rpc("authority","call_local","reliable",0)
+func getWin(n):
+	winPlayer = n
+	get_tree().call_group("system","on_winned")

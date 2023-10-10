@@ -46,7 +46,7 @@ func on_walkToStep(s,dir):
 	stepNow += 1 * dir
 	nextPos = ladder.getPosFromStep(stepNow)
 	await Lib.wait(0.2)
-	if stepNow < 20: 
+	if stepNow < 5: 
 		if s > 1 : 
 			on_walkToStep(s-1,dir)
 		else : 
@@ -54,7 +54,7 @@ func on_walkToStep(s,dir):
 			isWalk = false
 		return
 	#debug
-	get_tree().call_group("system","on_winned")
+	GameController.server_win.rpc(info["name"])
 	return
 	
 	if s > 0 : on_walkToStep(s-1,-dir)
