@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bke45wk4a2klh"]
+[gd_scene load_steps=7 format=3 uid="uid://bqsn8lfmgppj8"]
 
 [ext_resource type="PackedScene" uid="uid://bna34vu8s5tj7" path="res://scene/component/game/comp_card_select.tscn" id="1_oxucl"]
 [ext_resource type="Script" path="res://scripts/card/cardMyTime.gd" id="1_pmud1"]
 [ext_resource type="PackedScene" uid="uid://dv8hgmcpchcax" path="res://scene/component/game/comp_select_self.tscn" id="1_rtydj"]
-[ext_resource type="PackedScene" uid="uid://ds4waxpukap80" path="res://scene/component/game/comp_action_walkInRoll.tscn" id="2_840p1"]
+[ext_resource type="PackedScene" path="res://scene/component/game/comp_action_walkInRoll.tscn" id="2_840p1"]
 [ext_resource type="Texture2D" uid="uid://clgvu2ket71uv" path="res://asset/card2.png" id="5_lvoro"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oxfg4"]
