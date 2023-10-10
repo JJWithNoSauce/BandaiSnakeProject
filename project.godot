@@ -21,6 +21,10 @@ GameController="*res://scripts/network/gameController.gd"
 Lib="*res://scripts/lib.gd"
 ActionControl="*res://scripts/network/actionControl.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 click={
