@@ -17,6 +17,11 @@ position = Vector2(600, 600)
 [node name="3" type="Marker2D" parent="cardPos"]
 position = Vector2(750, 600)
 
+[node name="Coolboard" type="Sprite2D" parent="."]
+position = Vector2(597, 614)
+scale = Vector2(1, 0.82)
+texture = ExtResource("2_tcksm")
+
 [node name="useCard" type="Button" parent="."]
 visible = false
 anchors_preset = 2
@@ -29,11 +34,6 @@ offset_bottom = -8.0
 grow_vertical = 0
 pivot_offset = Vector2(37.165, 14.47)
 text = "use card"
-
-[node name="Coolboard" type="Sprite2D" parent="."]
-position = Vector2(597, 614)
-scale = Vector2(1, 0.82)
-texture = ExtResource("2_tcksm")
 
 [connection signal="child_entered_tree" from="cardPos" to="." method="_on_card_pos_child_entered_tree"]
 [connection signal="pressed" from="useCard" to="." method="_on_use_card_pressed"]
